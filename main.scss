@@ -1,0 +1,11 @@
+//custom variables
+$primary: #0a9700;
+.button {
+    background-color: $primary; 
+    &.primary {
+      color: white; 
+    }
+  }
+
+//import boostrap
+@import "./node_modules/bootstrap/scss/bootstrap";

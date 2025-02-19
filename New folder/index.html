@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="/CSS/main.main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="/User/style.css" rel="stylesheet">
+    <style>
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/User/Image/Login2.svg') no-repeat center center;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+            background-color: white;
+        }
+
+        .top-right-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 992px) {
+            .bg-image {
+                position: static;
+                filter: none;
+                z-index: 0;
+                height: 100vh;
+            }
+            .login-card {
+                background: #fff;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+
+    <a href="/User/" class="top-right-button btn btn-success">User Login -></a>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row w-100">
+            
+            <div class="bg-image d-lg-none"></div>
+
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="/User/Image/Login2.svg" alt="Image" class="w-100 h-100 object-fit-cover">
+            </div>
+            
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="login-card" style="width: 100%; max-width: 400px;">
+                    <h3 class="text-center mb-4">Admin Login</h3>
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Enter Phone Number</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="otp" placeholder="Enter Password" required>
+                        </div>
+                        <a type="submit" href="Dashboard.html" class="btn btn btn-success col-12">Enter</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
