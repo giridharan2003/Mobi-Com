@@ -14,10 +14,20 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     
         plans[category].forEach(plan => {
+            let cardTagHTML = "";
+        
+            if (plan.fun) {
+                if (plan.fun === "Most Popular"){
+                    cardTagHTML = `<span class="card-tag most-popular">${plan.fun}</span>`;
+                }else{
+                    cardTagHTML = `<span class="card-tag budget">${plan.fun}</span>`;
+                }
+            }
+
             allPlansContainer.innerHTML += `
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body text-center">
+                    <div class="card shadow-sm h-100 position-relative">
+                        ${cardTagHTML}  <div class="card-body text-center">
                             <h5 class="card-title">${plan.title}</h5>
                             <p class="card-text">${plan.description}</p>
                             <button class="btn btn-dark details-btn" data-title="${plan.title}" data-details="${plan.details}">View Details</button>
@@ -50,15 +60,16 @@ document.body.addEventListener("click", function (event) {
         if (!modal) return;
 
         const title = event.target.dataset.title;
+        const description = event.target.dataset.description;
         const details = event.target.dataset.details;
 
         document.getElementById("modalTitle").textContent = title;
-        document.getElementById("modalBody").textContent = details;
+        document.getElementById("modalBody").innerHTML = `<strong>Description:</strong> ${description}<br><br><strong>Details:</strong> ${details}`;
 
         const proceedButton = document.querySelector(".modal-footer .btn-primary");
         proceedButton.addEventListener("click", function () {
-            
             localStorage.setItem("planTitle", title);
+            localStorage.setItem("planDescription", description);
             localStorage.setItem("planDetails", details);
         });
 

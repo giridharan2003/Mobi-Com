@@ -53,34 +53,39 @@
                 box-shadow: none;
             }
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-light text-dark">
 
-    <a href="/New folder/" class="top-right-button btn btn-success">Admin Login -></a>
+    <a href="/New folder/" class="top-right-button btn btn-success">Admin Login </a>
 
-    <div class="container-fluid d-flex justify-content-center align-items-center ">
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
         <div class="row w-100">
             
             <div class="bg-image d-lg-none"></div>
-
+  
             <div class="col-lg-6 d-none d-lg-block">
                 <img src="Image/Login.svg" alt="Image" class="w-100 h-100 object-fit-cover">
             </div>
             
             <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="login-card" style="width: 100%; max-width: 400px;">
-                    <h3 class="text-center mb-4">Mobile Verification</h3>
+                    <h3 class="text-center mb-4">Login</h3>
                     <form id="login-form">
-                        <div class="mb-3">
+                        <div class="mb-3" id="phone-section">
                             <label for="phone" class="form-label">Enter Phone Number</label>
                             <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 hidden" id="otp-section">
                             <label for="otp" class="form-label">Enter OTP</label>
                             <input type="text" class="form-control" id="otp" placeholder="Enter OTP" required>
                         </div>
-                        <button type="submit" class="btn btn details-btn w-100">Verify</button>
+                        <button type="button" id="send-otp-btn" class="btn btn-success w-100">Send OTP</button>
+                        <button type="submit" id="verify-btn" class="btn btn-success w-100 hidden">Verify</button>
                     </form>
                 </div>
             </div>
@@ -88,14 +93,37 @@
     </div>
 
     <script>
+        const phoneSection = document.getElementById('phone-section');
+        const otpSection = document.getElementById('otp-section');
+        const sendOtpBtn = document.getElementById('send-otp-btn');
+        const verifyBtn = document.getElementById('verify-btn');
+        const phoneInput = document.getElementById('phone');
+        const otpInput = document.getElementById('otp');
+
+        otpSection.classList.add('hidden');
+        verifyBtn.classList.add('hidden');
+
+        sendOtpBtn.addEventListener('click', function() {
+            const phoneNumber = phoneInput.value.trim();
+
+            if (phoneNumber && phoneNumber.length === 10) {
+                phoneSection.classList.add('hidden');
+                otpSection.classList.remove('hidden');
+                sendOtpBtn.classList.add('hidden');
+                verifyBtn.classList.remove('hidden');
+            } else {
+                alert('Please enter a valid 10-digit phone number.');
+            }
+        });
+
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const otpInput = document.getElementById('otp').value;
+            const otpValue = otpInput.value.trim();
 
-            if (otpInput < 100000) {
+            if (otpValue && otpValue.length === 6) {
                 window.location.href = 'home.html';
             } else {
-                alert('Invalid OTP. It should be less than 6 digits');
+                alert('Invalid OTP. Please enter a 6-digit OTP.');
             }
         });
     </script>

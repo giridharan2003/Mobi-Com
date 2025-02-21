@@ -4,7 +4,7 @@
   --background-color: #ffffff;
   --default-color: #222222;
   --heading-color: #172a28;
-  --accent-color: #008374;
+  --accent-color: #048475;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
 }
@@ -549,6 +549,50 @@ html, body {
     }
   }
 
+
+/*--------------------------------------------------------------
+# current plan section
+--------------------------------------------------------------*/
+
+#current-plan {
+  background: #f8f9fa; /* Light background for contrast */
+}
+
+/* Card Styling */
+.current-plan-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.current-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styling */
+.card-header {
+  background: #08897b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  --background-color: #08897b;
+  background-color: var(--background-color);
+}
+
+/* Text Styling */
+.card-title {
+  font-size: 1.4rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
   
 /*--------------------------------------------------------------
 # Global Section Titles
@@ -795,7 +839,7 @@ html, body {
     font-size: 13px;
   }
 
-  /*--------------------------------------------------------------
+/*--------------------------------------------------------------
 # Scroll Top Button
 --------------------------------------------------------------*/
 
@@ -828,3 +872,74 @@ html, body {
     opacity: 1;
     bottom: 15px;
   }
+
+
+/*--------------------------------------------------------------
+# Modal
+--------------------------------------------------------------*/
+.card-tag {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 15px 0 0 0;
+  color: white;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.card-tag.most-popular {
+  background-color: #ff4757; 
+}
+
+.card-tag.budget {
+  background-color: #2ed573;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header h1 {
+  font-size: 1.25rem;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.modal-footer .btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-footer .btn-outline-secondary:hover {
+  background: #6c757d;
+  color: white;
+}
+
+.modal-footer .btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-close {
+  opacity: 0.7;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
